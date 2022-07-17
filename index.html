@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+            function getAnswer(color)
+            {
+                if (color == 'black')
+                {
+                    document.getElementById(color).style.backgroundColor = 'green';
+                    let p = document.createElement('p');
+                    p.innerHTML = 'Correct!';
+                    document.querySelector("div.section").appendChild(p);
+                }
+                else
+                {
+                    document.getElementById(color).style.backgroundColor = 'red';
+                    let p = document.createElement('p');
+                    p.innerHTML = 'Incorrect';
+                    document.querySelector("div.section").appendChild(p);
+                }
+            }
+
+            function checkAnswer()
+            {
+                let userAnswer = document.querySelector('#answer').value;
+                if (['no', 'n'].includes(userAnswer.toLowerCase()))
+                {
+                    document.querySelector('#answer').style.backgroundColor = 'green';
+                    let p = document.createElement('p');
+                    p.innerHTML = 'Correct!';
+                    document.querySelector('#answer').parentNode.appendChild(p);
+                }
+                else
+                {
+                    document.querySelector('#answer').style.backgroundColor = 'red';
+                    let p = document.createElement('p');
+                    p.innerHTML = 'Incorrect';
+                    document.querySelector('#answer').parentNode.appendChild(p);
+                }
+            }
+
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <h3>
+                    What color is the skin of a polar bear?
+                </h3>
+                <button onclick="getAnswer('white');" id="white">White</button>
+                <button onclick="getAnswer('black');" id="black">Black</button>
+                <button onclick="getAnswer('yellow');" id="yellow">Yellow</button>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <h3>
+                    Do polar bears and penguins live on the same pole?
+                </h3>
+                <input id="answer" type="text">
+                <button onclick="checkAnswer();">Check Answer</button>
+            </div>
+        </div>
+    </body>
+</html>
